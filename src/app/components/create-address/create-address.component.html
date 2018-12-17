@@ -1,0 +1,52 @@
+<div class='container'>
+  <h2 class='mt-4 mb-4'>
+    Create new address
+  </h2>
+  <hr>
+  <div class='col-12'>
+    <form class='col-6 m-auto' [formGroup]="addressForm" (ngSubmit)="submitForm()">
+      <div class="form-group">
+        <label for="firstNameInput">First name</label>
+        <input formControlName="firstName" name='firstName' type="text" class="form-control" id="firstNameInput" aria-describedby="firstName" placeholder="Enter first name">
+      </div>
+      <div class="form-control-feedback text-danger"
+        *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
+        <p *ngIf="firstName.errors.required">Firstname is required</p>
+      </div>
+      <div class="form-group">
+        <label for="lastNameInput">Last name</label>
+        <input formControlName="lastName" name='lastName' type="text" class="form-control" id="lastNameInput" aria-describedby="lastName" placeholder="Enter last Name">
+      </div>
+      <div class="form-control-feedback text-danger"
+        *ngIf="lastName.errors && (lastName.dirty || lastName.touched)">
+        <p *ngIf="lastName.errors.required">Lastname is required</p>
+      </div>
+      <div class="form-group">
+        <label for="phoneNrInput">Phone number</label>
+        <input formControlName="phoneNr" name='phoneNr' type="text" class="form-control" id="phoneNrInput" aria-describedby="phoneNr" placeholder="Enter phone number">
+      </div>
+      <div class="form-control-feedback text-danger"
+        *ngIf="phoneNr.errors && (phoneNr.dirty || phoneNr.touched)">
+        <p *ngIf="phoneNr.errors.required">Phone number is required</p>
+        <p *ngIf="phoneNr.errors.pattern">The phone number can only contain numbers</p>
+      </div>
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input formControlName="address" name='address' type="text" class="form-control" id='addressInput' aria-describedby="address" placeholder="Start typing address and select from Dropdown">
+        <small id="addressInput" class="form-text text-muted">Please select the address from the dropdown list.</small>
+      </div>
+      <div class="form-control-feedback text-danger"
+        *ngIf="address.errors && (address.dirty || address.touched)">
+        <p *ngIf="addressLat.errors.required">Please choose address from dropdown</p>
+      </div>
+      <div formGroupName='geoData' class="form-group">
+        <input formControlName="addressLat" name='addressLat' type="hidden" class="form-control" id="addressLatInput">
+        <input formControlName="addressLng" name='addressLng' type="hidden" class="form-control" id="addressLngInput">
+      </div>
+      <div class='mb-3'>
+        <small *ngIf="message !== undefined" class="alert">{{message}}</small>
+      </div>
+      <button type="submit" [disabled]='addressForm.invalid' class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>

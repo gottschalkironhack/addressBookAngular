@@ -1,0 +1,11 @@
+
+<div class='container'>
+  <h2 class='mt-4 mb-4'>Address book</h2>
+  <div class='card-columns'>
+    <div *ngFor='let address of addresses'>
+      <app-address-detail [address]='address'></app-address-detail> 
+    </div>
+  </div>
+</div>
+
+

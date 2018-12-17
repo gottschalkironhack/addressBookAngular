@@ -1,0 +1,12 @@
+<div class='card'>
+  <div class="card-body">
+    <hr>
+    <a class="card-link mb-6" [routerLink]="['/edit-address', address._id]">Edit address</a>
+    <hr>
+    <h5 class="card-title">{{ address.firstName }} {{ address.lastName }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Phone number: {{ address.phoneNr }}</h6>
+    <p class="card-text">Address: {{ address.address }}</p>
+    <hr>
+  </div>
+  <app-address-map [latitude]="address.addressLat" [longitude]="address.addressLng"></app-address-map>
+</div>
